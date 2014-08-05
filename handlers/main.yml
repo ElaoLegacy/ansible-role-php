@@ -1,0 +1,7 @@
+---
+
+- name: php restart
+  service: >
+    name=php5-fpm
+    state=restarted
+  sudo: yes
