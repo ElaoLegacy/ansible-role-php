@@ -1,5 +1,5 @@
-Php
-===
+Ansible Role - Php
+==================
 
 A php role for elao symfony standard vagrant box
 
@@ -11,7 +11,7 @@ This role only run on elao symfony standard vagrant box. See https://vagrantclou
 Role Handlers
 -------------
 
-* php restart: Restart php5 fpm service
+* php restart: Restart php fpm service
 
 Example Playbook
 ----------------

@@ -1,14 +1,16 @@
 ---
+
 galaxy_info:
-  author: elao
-  description: A php role for elao symfony standard vagrant box
-  company: elao
-  license: MIT
+
+  author:              elao
+  description:         A php role for elao symfony standard vagrant box
+  company:             elao
+  license:             MIT
   min_ansible_version: 1.6.10
   platforms:
-  - name: Debian
-    versions:
+    - name: Debian
+  versions:
     - wheezy
   categories:
-  - development
-  - web
+    - development
+    - web
