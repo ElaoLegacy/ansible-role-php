@@ -1,0 +1,10 @@
+---
+
+php_config: 100_config.ini
+php_config_cli: {}
+php_config_fpm: {}
+#php:
+#  config_file: 100_config.ini
+#  config:
+#    cli: {}
+#    fpm: {}
