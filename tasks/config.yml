@@ -21,19 +21,3 @@
   notify:
     - php restart
   sudo: yes
-
-#- name: config npm
-#  template: >
-#    src=config.ini.j2
-#    dest=/etc/php5/fpm/conf.d/{{ php_config }}
-#  when: php_config_fpm|length > 0
-#  sudo: yes
-
-#- name: config fpm
-#  ini_file: >
-#    dest=/etc/php5/fpm/conf.d/{{ php_config }}
-#    section=trou
-#    option=pipi
-#    value=caca
-#  when: php_config_fpm|length > 0
-#  sudo: yes
