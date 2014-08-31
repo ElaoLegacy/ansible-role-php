@@ -1,0 +1,19 @@
+---
+
+- name: vagrant env
+  template: >
+    src=vagrant_env.conf.j2
+    dest=/etc/php5/fpm/pool.d/vagrant_env.conf
+  notify:
+    - php restart
+  when: elao_vagrant
+  sudo: yes
+
+- name: vagrant env not
+  file: >
+    path=/etc/php5/fpm/pool.d/vagrant_env.conf
+    state=absent
+  notify:
+    - php restart
+  when: not elao_vagrant
+  sudo: yes

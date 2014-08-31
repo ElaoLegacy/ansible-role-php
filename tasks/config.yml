@@ -1,23 +1,67 @@
 ---
 
-- name: config cli
+- name: config env
+  template: >
+    src=config_{{ item[1] }}.ini.j2
+    dest=/etc/php5/{{ item[0] }}/conf.d/90_config_{{ item[1] }}.ini
+  notify:
+    - php restart
+  when: elao_env == item[1]
+  with_nested:
+    - [ 'cli', 'fpm' ]
+    - [ 'dev', 'prod' ]
+  sudo: yes
+
+- name: config env not
+  file: >
+    path=/etc/php5/{{ item[0] }}/conf.d/90_config_{{ item[1] }}.ini
+    state=absent
+  notify:
+    - php restart
+  when: not elao_env == item[1]
+  with_nested:
+    - [ 'cli', 'fpm' ]
+    - [ 'dev', 'prod' ]
+  sudo: yes
+
+# Todo : Find a way to merge cli/fpm config with a default one
+
+- name: config
   ini_file: >
-    dest=/etc/php5/cli/conf.d/{{ php_config }}
-    section="PHP"
+    dest=/etc/php5/cli/conf.d/100_config.ini
+    section=PHP
     option={{ item.key }}
     value={{ item.value }}
-  when: php_config_cli|length > 0
-  with_dict: php_config_cli
+  when: elao_php_config|length > 0
+  with_dict: elao_php_config
+  sudo: yes
+
+- name: config
+  ini_file: >
+    dest=/etc/php5/fpm/conf.d/100_config.ini
+    section=PHP
+    option={{ item.key }}
+    value={{ item.value }}
+  when: elao_php_config|length > 0
+  with_dict: elao_php_config
+  sudo: yes
+
+- name: config cli
+  ini_file: >
+    dest=/etc/php5/cli/conf.d/110_config_cli.ini
+    section=PHP
+    option={{ item.key }}
+    value={{ item.value }}
+  when: elao_php_config_cli|length > 0
+  with_dict: elao_php_config_cli
   sudo: yes
 
 - name: config fpm
   ini_file: >
-    dest=/etc/php5/fpm/conf.d/{{ php_config }}
-    section="PHP"
+    dest=/etc/php5/fpm/conf.d/100_config_fpm.ini
+    section=PHP
     option={{ item.key }}
     value={{ item.value }}
-  when: php_config_fpm|length > 0
-  with_dict: php_config_fpm
-  notify:
-    - php restart
+  when: elao_php_config_fpm|length > 0
+  with_dict: elao_php_config_fpm
   sudo: yes

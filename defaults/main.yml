@@ -1,5 +1,6 @@
 ---
 
-php_config: 100_config.ini
-php_config_cli: {}
-php_config_fpm: {}
+elao_php_version: 5.5
+elao_php_config: {}
+elao_php_config_cli: {}
+elao_php_config_fpm: {}
