@@ -18,7 +18,7 @@
     state=present
     update_cache=yes
   with_items:
-    - deb http://packages.dotdeb.org {{ ansible_lsb.codename }} all
+    - deb http://packages.dotdeb.org {{ ansible_distribution_release }} all
   sudo: yes
 
 - name: repositories 5.5
@@ -27,7 +27,7 @@
     state=present
     update_cache=yes
   with_items:
-    - deb http://packages.dotdeb.org {{ ansible_lsb.codename }}-php55 all
+    - deb http://packages.dotdeb.org {{ ansible_distribution_release }}-php55 all
   when: elao_php_version == 5.5
   sudo: yes
 
@@ -37,7 +37,7 @@
     state=absent
     update_cache=yes
   with_items:
-    - deb http://packages.dotdeb.org {{ ansible_lsb.codename }}-php55 all
+    - deb http://packages.dotdeb.org {{ ansible_distribution_release }}-php55 all
   when: not elao_php_version == 5.5
   sudo: yes
 
