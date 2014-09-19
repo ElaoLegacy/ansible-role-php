@@ -60,10 +60,3 @@
     - php5-imagick
     - php5-memcached
   sudo: yes
-
-- name: service
-  service: >
-    name=php5-fpm
-    state=started
-    enabled=true
-  sudo: yes
