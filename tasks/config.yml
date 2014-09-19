@@ -26,7 +26,7 @@
 
 # Todo : Find a way to merge cli/fpm config with a default one
 
-- name: config
+- name: config global cli
   ini_file: >
     dest=/etc/php5/cli/conf.d/100_config.ini
     section=PHP
@@ -36,7 +36,7 @@
   with_dict: elao_php_config
   sudo: yes
 
-- name: config
+- name: config global fpm
   ini_file: >
     dest=/etc/php5/fpm/conf.d/100_config.ini
     section=PHP
@@ -46,7 +46,7 @@
   with_dict: elao_php_config
   sudo: yes
 
-- name: config cli
+- name: config specific cli
   ini_file: >
     dest=/etc/php5/cli/conf.d/110_config_cli.ini
     section=PHP
@@ -56,7 +56,7 @@
   with_dict: elao_php_config_cli
   sudo: yes
 
-- name: config fpm
+- name: config specific fpm
   ini_file: >
     dest=/etc/php5/fpm/conf.d/100_config_fpm.ini
     section=PHP
