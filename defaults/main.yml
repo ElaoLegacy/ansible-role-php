@@ -4,3 +4,41 @@ elao_php_version: 5.5
 elao_php_config: {}
 elao_php_config_cli: {}
 elao_php_config_fpm: {}
+
+# Modules
+elao_php_modules: []
+elao_php_modules_available:
+  - apcu
+  - curl
+  - enchant
+  - gd
+  - gearman
+  - geoip
+  - gmp
+  - http
+  - imagick
+  - imap
+  - interbase
+  - intl
+  - ldap
+  - mcrypt
+  - memcache
+  - memcached
+  - mongo
+  - mysqlnd
+  - odbc
+  - pinba
+  - pgsql
+  - pspell
+  - readline
+  - recode
+  - redis
+  - snmp
+  - spplus
+  - sqlite
+  - ssh2
+  - sybase
+  - tidy
+  - xcache
+  - xmlrpc
+  - xsl

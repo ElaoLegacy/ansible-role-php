@@ -1,6 +1,7 @@
 ---
 
 - include: packages.yml
+- include: modules.yml
 - include: services.yml
 - include: config.yml
 - include: vagrant.yml

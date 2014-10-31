@@ -1,0 +1,28 @@
+---
+
+- name: modules enabled
+  shell: > 
+    php -m
+  register: elao_php_modules_enabled_result
+  sudo: yes
+
+- set_fact:
+    elao_php_modules_enabled: "{{ elao_php_modules_enabled_result.stdout_lines|intersect(elao_php_modules_available) }}"
+
+- name: modules packages install
+  apt: >
+    name={{ item }}
+    state=present
+  with_items: elao_php_modules|intersect(elao_php_modules_available)|difference(elao_php_modules_enabled)|map('regex_replace','^(.*)$','php5-\\1')|list
+  notify:
+    - php restart
+  sudo: yes
+
+- name: modules packages remove
+  apt: >
+    name={{ item }}
+    state=absent
+  with_items: elao_php_modules_enabled|difference(elao_php_modules)|map('regex_replace','^(.*)$','php5-\\1')|list
+  notify:
+    - php restart
+  sudo: yes
