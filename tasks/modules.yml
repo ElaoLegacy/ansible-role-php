@@ -1,7 +1,7 @@
 ---
 
 - name: modules enabled
-  shell: > 
+  shell: >
     php -m
   register: elao_php_modules_enabled_result
   sudo: yes
