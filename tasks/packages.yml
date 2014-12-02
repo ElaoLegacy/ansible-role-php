@@ -41,6 +41,26 @@
   when: not elao_php_version == 5.5
   sudo: yes
 
+- name: repositories 5.6
+  apt_repository: >
+    repo="{{ item }}"
+    state=present
+    update_cache=yes
+  with_items:
+    - deb http://packages.dotdeb.org {{ ansible_distribution_release }}-php56 all
+  when: elao_php_version == 5.6
+  sudo: yes
+
+- name: repositories not 5.6
+  apt_repository: >
+    repo="{{ item }}"
+    state=absent
+    update_cache=yes
+  with_items:
+    - deb http://packages.dotdeb.org {{ ansible_distribution_release }}-php56 all
+  when: not elao_php_version == 5.6
+  sudo: yes
+
 # Todo : Suffix package names by "={{ elao_php_version }}.*" when bug fixed
 # See : https://github.com/ansible/ansible/issues/6885
 
