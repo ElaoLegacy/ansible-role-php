@@ -6,8 +6,8 @@ elao_php_config_cli: {}
 elao_php_config_fpm: {}
 
 # FPM
-elao_fpm_pool_path: /etc/php5/fpm/pool.d
-elao_fpm_pool_config:
+elao_php_fpm_pool_path: /etc/php5/fpm/pool.d
+elao_php_fpm_pool_config:
   www: 
     name:       "www"
     listen:     "127.0.0.1:9000"
