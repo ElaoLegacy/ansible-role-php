@@ -66,14 +66,14 @@
   with_dict: elao_php_config_fpm
   sudo: yes
 
-# Configuring FPM Pool
-- name: FPM Pool configuration
+# Configuring FPM Pools
+- name: config pools fpm
   template: >
     src=pool.conf.j2
-    dest={{ elao_php_fpm_pool_path }}/{{ item.value.name }}.conf
+    dest={{ elao_php_fpm_pools_path }}/{{ item.key }}.conf
   notify:
     - php restart
-  with_dict: elao_php_fpm_pool_config
+  with_dict: elao_php_fpm_pools
   sudo: yes
 
 # TODO Clean old pools

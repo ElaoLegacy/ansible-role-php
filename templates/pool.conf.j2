@@ -1,7 +1,7 @@
 ; Start a new pool named 'www'.
 ; the variable $pool can we used in any directive and will be replaced by the
 ; pool name ('www' here)
-[{{ item.value.name }}]
+[{{ item.key }}]
 
 ; Per pool prefix
 ; It only applies on the following directives:
@@ -30,8 +30,7 @@ group = www-data
 ;                            specific port;
 ;   '/path/to/unix/socket' - to listen on a unix socket.
 ; Note: This value is mandatory.
-;listen = /var/run/php5-fpm.sock
-listen = {{ item.value.listen }}
+listen = {{ item.value.listen|default('127.0.0.1:9000') }}
 
 ; Set listen(2) backlog.
 ; Default Value: 128 (-1 on FreeBSD and OpenBSD)

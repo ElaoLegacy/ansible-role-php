@@ -18,11 +18,15 @@ Role Handlers
 Role Variables
 --------------
 
-    elao_php_version:    5.5  # Php version (5.4|5.5)
-    elao_php_modules:    []   # Php modules
-    elao_php_config:     {}   # Global php config
-    elao_php_config_cli: {}   # Cli php config
-    elao_php_config_fpm: {}   # Fpm php config
+    elao_php_version:    5.5                      # Php version (5.4|5.5|5.6)
+    elao_php_modules:    []                       # Php modules
+    elao_php_config:     {}                       # Global php config
+    elao_php_config_cli: {}                       # Cli php config
+    elao_php_config_fpm: {}                       # Fpm php config
+    elao_php_fpm_pools_path: /etc/php5/fpm/pool.d # Fpm pools path
+    elao_php_fpm_pools:                           # Fpm pools
+      www: 
+        listen: "127.0.0.1:9000"    
 
 
 Example Playbook
