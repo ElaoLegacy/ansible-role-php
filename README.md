@@ -37,8 +37,9 @@ Example Playbook
 	      elao_php_version: 5.5
         elao_php_modules: ['intl', 'mysqlnd']
 	      elao_php_config:
-	        memory_limit:  512M
-	        date.timezone: Europe/Paris
+	        memory_limit:   512M
+	        date.timezone:  Europe/Paris
+          short_open_tag: "On"
 	      elao_php_config_cli:
 	        memory_limit:  1024M
       roles:
