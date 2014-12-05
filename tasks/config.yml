@@ -3,7 +3,7 @@
 - name: config env
   template: >
     src=config_{{ item[1] }}.ini.j2
-    dest=/etc/php5/{{ item[0] }}/conf.d/90_config_{{ item[1] }}.ini
+    dest=/etc/php5/{{ item[0] }}/conf.d/70-config_{{ item[1] }}.ini
   notify:
     - php restart
   when: elao_env == item[1]
@@ -14,7 +14,7 @@
 
 - name: config env not
   file: >
-    path=/etc/php5/{{ item[0] }}/conf.d/90_config_{{ item[1] }}.ini
+    path=/etc/php5/{{ item[0] }}/conf.d/70-config_{{ item[1] }}.ini
     state=absent
   notify:
     - php restart
@@ -26,9 +26,12 @@
 
 # Todo : Find a way to merge cli/fpm config with a default one
 
+# Todo : Remove config files (global & specific) when config dicts are empty
+# ! careful to php 5.4 where conf.d is a symbolic link to ../conf.d
+
 - name: config global cli
   ini_file: >
-    dest=/etc/php5/cli/conf.d/100_config.ini
+    dest=/etc/php5/cli/conf.d/80-config.ini
     section=PHP
     option={{ item.key }}
     value={{ item.value }}
@@ -38,7 +41,7 @@
 
 - name: config global fpm
   ini_file: >
-    dest=/etc/php5/fpm/conf.d/100_config.ini
+    dest=/etc/php5/fpm/conf.d/80-config.ini
     section=PHP
     option={{ item.key }}
     value={{ item.value }}
@@ -46,9 +49,12 @@
   with_dict: elao_php_config
   sudo: yes
 
+# Todo : specific configs should be ignored in case
+# /etc/php5/[env]/conf.d is a symbolic link to ../conf.d
+
 - name: config specific cli
   ini_file: >
-    dest=/etc/php5/cli/conf.d/110_config_cli.ini
+    dest=/etc/php5/cli/conf.d/90-config_cli.ini
     section=PHP
     option={{ item.key }}
     value={{ item.value }}
@@ -58,7 +64,7 @@
 
 - name: config specific fpm
   ini_file: >
-    dest=/etc/php5/fpm/conf.d/100_config_fpm.ini
+    dest=/etc/php5/fpm/conf.d/90-config_fpm.ini
     section=PHP
     option={{ item.key }}
     value={{ item.value }}
@@ -67,7 +73,7 @@
   sudo: yes
 
 # Configuring FPM Pools
-- name: config pools fpm
+- name: config fpm pools
   template: >
     src=pool.conf.j2
     dest={{ elao_php_fpm_pools_path }}/{{ item.key }}.conf
@@ -76,6 +82,4 @@
   with_dict: elao_php_fpm_pools
   sudo: yes
 
-# TODO Clean old pools
-
-
+# Todo : Clean old pools
