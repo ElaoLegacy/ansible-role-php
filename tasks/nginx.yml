@@ -1,0 +1,9 @@
+---
+
+- name: php nginx config
+  template: >
+    src=nginx.j2
+    dest=/etc/nginx/php_params
+  notify:
+    - nginx restart
+  sudo: yes
