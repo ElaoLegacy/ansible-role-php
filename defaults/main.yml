@@ -1,16 +1,15 @@
 ---
 
-elao_php_version: 5.5
-elao_php_config: {}
+elao_php_version:    5.5
+elao_php_config:     {}
 elao_php_config_cli: {}
 elao_php_config_fpm: {}
 
 # FPM
 elao_php_fpm_pools_path: /etc/php5/fpm/pool.d
 elao_php_fpm_pools:
-  www: 
-    listen: "127.0.0.1:9000"
-
+  www:               []
+  
 # Modules
 elao_php_modules: []
 elao_php_modules_available:
