@@ -8,8 +8,8 @@ elao_php_config_fpm: {}
 # FPM
 elao_php_fpm_pools_path: /etc/php5/fpm/pool.d
 elao_php_fpm_pools:
-  www:               []
-  
+  www: {}
+
 # Modules
 elao_php_modules: []
 elao_php_modules_available:
