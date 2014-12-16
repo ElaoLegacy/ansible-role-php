@@ -1,5 +1,14 @@
 ---
 
+- name: php nginx config directory
+  file: >
+    path=/etc/nginx
+    state=directory
+    owner=root
+    group=root
+    mode=0755
+  sudo: yes
+
 - name: php nginx config
   template: >
     src=nginx.j2
