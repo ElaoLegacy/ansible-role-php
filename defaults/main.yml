@@ -1,7 +1,8 @@
 ---
 
-elao_php_version:    5.5
-elao_php_config:     {}
+elao_php_version:    5.6
+elao_php_config:
+  date.timezone: UTC
 elao_php_config_cli: {}
 elao_php_config_fpm: {}
 
