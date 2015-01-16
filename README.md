@@ -77,6 +77,7 @@ elao_php_fpm_pools:
     access_format:              "%R - %u %t \"%m %r%Q%q\" %s %f %{mili}d %{kilo}M %C%%"
     slowlog:                    "log/$pool.log.slow"
     request_slowlog_timeout:    0
+    request_terminate_timeout:  "120s"
     rlimit_files:               1024
     rlimit_core:                0
     chroot:                     ""
