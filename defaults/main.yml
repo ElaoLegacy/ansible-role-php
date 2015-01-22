@@ -1,12 +1,16 @@
 ---
 
-elao_php_version:    5.6
+elao_php_version: 5.5
 elao_php_config:
   date.timezone: UTC
 elao_php_config_cli: {}
 elao_php_config_fpm: {}
 
-# FPM
+# Sapi
+elao_php_sapi: ['cli', 'fpm']
+elao_php_sapi_enabled: []
+
+# Fpm
 elao_php_fpm_pools_path: /etc/php5/fpm/pool.d
 elao_php_fpm_globals:     []
 elao_php_fpm_pools:
